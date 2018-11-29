@@ -1,6 +1,7 @@
 #Teg #xslCommon #
 
 Example:
+#xslExample
 
 <!-- Xml -->
 
@@ -38,3 +39,41 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
    <td>999</td>
 </tr>
 
+
+
+<value-of select="catalog/cd/title> - указывает xpath до какого-то элемента
+
+
+<xsl:for-each select="catalog/cd">  - цикл по xpath
+<xsl:for-each select="catalog/cd[name='Evgeni']"> - условия цикла. Доступно "=" "!=" "&lt" "&lt"(<) "&gt"(>)
+
+
+<xsl:sort select="name"/>  -сортирует в цикле foreach по алфавиту
+  <xsl:for-each select="catalog/cd">
+  <xsl:sort select="name"/>
+    <tr>
+      <td><xsl:value-of select="name"/></td>
+      <td><xsl:value-of select="age"/></td>
+    </tr>
+    </xsl:for-each>
+
+
+<xsl:if test="age &gt; 10"> -условие
+<xsl:if test="age &gt; 10">
+        <tr>
+          <td><xsl:value-of select="name"/></td>
+          <td><xsl:value-of select="age"/></td>
+        </tr>
+      </xsl:if>
+
+
+<xsl:choose> - аналог switch в java
+<xsl:choose>
+    <xsl:when test="price &gt; 10">
+        <td bgcolor="#ff00ff">
+        <xsl:value-of select="artist"/></td>
+    </xsl:when>
+    <xsl:otherwise>
+        <td><xsl:value-of select="artist"/></td>
+    </xsl:otherwise>
+</xsl:choose>
