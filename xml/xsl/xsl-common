@@ -71,9 +71,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:choose>
     <xsl:when test="price &gt; 10">
         <td bgcolor="#ff00ff">
-        <xsl:value-of select="artist"/></td>
+        <xsl:value-of select="name"/></td>
     </xsl:when>
     <xsl:otherwise>
-        <td><xsl:value-of select="artist"/></td>
+        <td><xsl:value-of select="name"/></td>
     </xsl:otherwise>
 </xsl:choose>
