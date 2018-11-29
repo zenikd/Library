@@ -1,0 +1,40 @@
+#Teg #xslCommon #
+
+Example:
+
+<!-- Xml -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <cd>
+    <name>Evgeni</name>
+    <age>999</age>
+  </cd>
+</catalog>
+
+
+
+<!-- Xsl -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/">
+    <xsl:for-each select="catalog/cd">
+    <tr>
+      <td><xsl:value-of select="name"/></td>
+      <td><xsl:value-of select="age"/></td>
+    </tr>
+    </xsl:for-each>
+
+</xsl:template>
+</xsl:stylesheet>
+
+<!-- Result -->
+
+
+<tr>
+   <td>Evgeni</td>
+   <td>999</td>
+</tr>
+
