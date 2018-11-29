@@ -77,3 +77,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
         <td><xsl:value-of select="name"/></td>
     </xsl:otherwise>
 </xsl:choose>
+
+
+ <xsl:text>Hello world</xsl:text> - используется для печати текста
