@@ -1,0 +1,92 @@
+#elasticsearch-common
+
+GET localhost:9200/_cat/health?v    проверка работостособности
+
+PUT /customer?pretty                создание нового индекса
+
+PUT /customer/_doc/1?pretty         добавление документа к индексу
+{
+  "name": "John Doe"
+}
+
+GET /customer/_doc/1?pretty           получение документа
+
+POST /customer/_doc?pretty            установка рандомного id
+{
+  "name": "Eugene"
+}
+
+POST /customer/_doc/1/_update?pretty   апдейт документа
+{
+  "doc": { "name": "Eugene Zenkov",
+            "price": 4 }
+}
+
+POST /customer/_doc/1/_update?pretty   добавить 5 к цене
+{
+  "script":"ctx._source.price += 5"
+}
+
+DELETE /customer/_doc/2?pretty         удаление документа
+
+POST /customer/_doc/_bulk?pretty       Транзакция(должан быть пустая строка в конце(36ая))
+{"update":{"_id":"1"}}
+{"doc": { "name": "Eugene" } }
+{"delete":{"_id":"2"}}
+
+
+Добавить данные из Test-dataset
+GET /customer/_search                Пример поиска
+{
+  "query": { "match_all": {} },
+  "size": 10,
+  "sort": [
+    { "account_number": "asc" }
+  ]
+}
+
+
+{                                               Поиск по 2 параметрам.
+  "query": {
+    "bool": {
+      "should": [
+        { "match": { "address": "mill" } },
+        { "match": { "address": "lane" } }
+      ]
+    }
+  }
+}
+
+Строка 52 можно заменить
+must все параметры должны входить
+must_not не должны входить
+should   хотя бы один должен входить
+
+
+{
+  "query": {
+    "bool": {
+      "must": { "match_all": {} },
+      "filter": {                             Фильтр
+        "range": {
+          "balance": {
+            "gte": 20000,
+            "lte": 30000
+          }
+        }
+      }
+    }
+  }
+}
+
+
+{
+  "size": 0,                                Аналог count
+  "aggs": {
+    "group_by_state": {
+      "terms": {
+        "field": "state.keyword"
+      }
+    }
+  }
+}
