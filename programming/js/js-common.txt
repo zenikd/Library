@@ -1,0 +1,28 @@
+#js #java script
+
+Можно вытащить любой элемент по id и сетнуть ему какой-то параметр
+document.getElementById("demo").innerHTML = "Hello JavaScript";           innerHTML - текст внутри элемента (hello.html)
+document.getElementById("demo").style.fontSize = "35px";                  изменение css			    (fontsize.html)
+document.getElementById('myImage').src='pic_bulbon.gif;                   установка нового измображениея 
+
+<script src="myScript.js"></script>                                       подключение js из файла
+
+window.alert("Warning");                                                  Вывод попап с сообщение об ошибке 
+
+typeof "John"              // Returns "string"                            проверка типа переменной
+
+
+
+var person = {							          создание объекта
+  firstName: "John",
+  lastName : "Doe",
+  id       : 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+name = person.fullName();						  можно вызвать функцию объекта
+
+<button onclick="displayDate()">The time is?</button>                     вызов функции по имени
+
