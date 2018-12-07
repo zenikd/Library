@@ -1,0 +1,63 @@
+#angular
+
+<input type="text" ng-model="name" placeholder="Enter text">              вводимый текст записываеться в переменную name
+<h1>Hello {{name}}</h1>                                                   вывод переменной name на экран (showName.html)
+<p ng-bind="name"></p>                                                    вывод переменной name также как и {{name}}
+__________________________________________________________________________________________________________________________________________
+
+
+Существуют контроллеры angular
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope)                                 инициализация
+
+<div ng-app="myApp" ng-controller="myCtrl">                               способ использования (controller.html)
+</div>
+__________________________________________________________________________________________________________________________________________
+
+
+ng-init                                                                   используется для инициализации переменных
+__________________________________________________________________________________________________________________________________________
+
+
+app.directive("w3TestDirective", function() {                             позволяет создавать собственные диррективы
+    return {
+        template : "<h1>Made by a directive!</h1>"
+    };
+});
+
+<w3-test-directive></w3-test-directive>                                   выведет нашу диррективу       (customDir.html)
+
+диррекивы можно использовать
+<w3-test-directive></w3-test-directive>
+<div w3-test-directive></div>
+<div class="w3-test-directive"></div>
+<!-- directive: w3-test-directive -->
+
+Можно ограничить использование дирректив (restrict.html)
+E for Element name
+A for Attribute
+C for Class
+M for Comment
+__________________________________________________________________________________________________________________________________________
+
+ $scope.name ="evgen"                                                    определяеться в контролере
+ $rootScope.name ="evgen"
+
+__________________________________________________________________________________________________________________________________________
+
+Фильтры
+<li ng-repeat="x in names | filter : 'i'">                             выведет элементы содержащие в себе i  (filter.html)
+<li ng-repeat="x in names | orderBy:'country'">                        выведет отсортированые по стране   (filter2.html)
+
+Можно создавать собчтвенные фильтры пример (customFilter.html)
+
+__________________________________________________________________________________________________________________________________________
+
+Сервисы это глобавльные функции самого ангуляра. Начинаються с $
+
+$location.absUrl()          возврашает абсолютный путь страницы
+$http                       https://www.w3schools.com/angular/tryit.asp?filename=try_ng_services_http
+$timeout                    отлажить опрецию на время (timeout.html)
+$interval
+
+Можно создавать собственный сервис (customService.html)
