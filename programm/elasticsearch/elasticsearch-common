@@ -1,5 +1,8 @@
 #elasticsearch-common
 
+index - база данных
+mapping - таблица
+
 GET localhost:9200/_cat/health?v    проверка работостособности
 
 PUT /customer?pretty                создание нового индекса
