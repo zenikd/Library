@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Test React</title>
+<script src= "https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script src= "https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { loadTranslations, setLocale, syncTranslationWithStore, i18nReducer } from 'react-redux-i18n';
+import reducers from './reducers';
+ 
+const translationsObject = {
+  en: {
+    application: {
+      title: 'Awesome app with i18n!',
+      hello: 'Hello, %{name}!'
+    },
+    date: {
+      long: 'MMMM Do, YYYY'
+    },
+    export: 'Export %{count} items',
+    export_0: 'Nothing to export',
+    export_1: 'Export %{count} item',
+    two_lines: 'Line 1<br />Line 2',
+    literal_two_lines: 'Line 1\
+Line 2'
+  },
+  nl: {
+    application: {
+      title: 'Toffe app met i18n!',
+      hello: 'Hallo, %{name}!'
+    },
+    date: {
+      long: 'D MMMM YYYY'
+    },
+    export: 'Exporteer %{count} dingen',
+    export_0: 'Niks te exporteren',
+    export_1: 'Exporteer %{count} ding',
+    two_lines: 'Regel 1<br />Regel 2',
+    literal_two_lines: 'Regel 1\
+Regel 2'
+  }
+};
+ 
+const store =  createStore(
+  combineReducers({
+    ...reducers,
+    i18n: i18nReducer
+  }),
+  applyMiddleware(thunk)
+);
+syncTranslationWithStore(store)
+store.dispatch(loadTranslations(translationsObject));
+store.dispatch(setLocale('en'));
+
+var React = require('react');
+var Translate = require('react-redux-i18n').Translate;
+var Localize = require('react-redux-i18n').Localize;
+ 
+var AwesomeComponent = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <Translate value="application.title"/>
+          // => returns '<span>Toffe app met i18n!</span>' for locale 'nl'
+        <Translate value="application.title" style={{ fontWeight: 'bold', fontSize: '14px' }} />
+        // => returns '<span style="font-weight:bold;font-size:14px;">Toffe app met i18n!</span>' for locale 'nl'
+        <Translate value="application.hello" name="Aad"/>
+          // => returns '<span>Hallo, Aad!</span>' for locale 'nl'
+        <Localize value="2015-09-03" dateFormat="date.long"/>
+          // => returns '<span>3 september 2015</span> for locale 'nl'
+        <Localize value={10/3} options={{style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2}}/>
+          // => returns '<span>€ 3,33</span> for locale 'nl'
+        <Translate value="export" count={1} />
+          // => returns '<span>Exporteer 1 ding</span> for locale 'nl'
+        <Translate value="export" count={2} />
+          // => returns '<span>Exporteer 2 dingen</span> for locale 'nl'
+        <Translate value="two_lines" dangerousHTML />
+          // => returns '<span>Regel 1<br />Regel 2</span>'
+      </div>
+    );
+  }
+});
+</script>
+
+</body>
+</html>
+

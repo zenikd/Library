@@ -3,5 +3,8 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/programming/angular/angular-tutorial/angular-phonecat" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/programming/angularJs/angular-tutorial/angular-phonecat" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/programming/react/react-deux-i18n/react-redux-i18n" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/programming/react/react-redux-i18n" vcs="Git" />
   </component>
 </project>
