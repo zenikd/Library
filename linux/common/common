@@ -1,0 +1,26 @@
+#linux
+
+wc -l                               print count words in file
+chwon  myuser mydile.txt            change owner file
+chgrp  mygroup mydile.txt           change group of file
+
+chmod 777 myfile.txt                Установка пермишенов
+setgid & setgid                     Все пользователи буду обдатать правами юзера/группы
+
+chattr                              Позволяет давать и забирать права на удаление/ редактирование и другие свойства
+lsattr                              Посмотреть права на файлы
+
+find -name myfile                   поиск по файлам
+
+awk ''{print $1, $2}' myfile        вывод первого и второго слова кадой строки '
+
+m4 -DNAME=Sanmdy myflie             Замена NAME на Sandy
+My NAME is Sandy
+
+
+sftp                                для передачи по ssh
+
+sleep                               ожидание и выпонение
+watch                               повторение с определенным промежутком
+at                                  выполенение в ззаданную дату
+crintab                             повторение в заданую дату много раз
