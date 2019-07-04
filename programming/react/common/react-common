@@ -1,72 +1,22 @@
+Object.assign(target, source);                              //объединяет 2 объекта в 1
+____________________________________________________________________________
+React.PureComponent имплементит shouldComponentUpdate()
+shouldComponentUpdate() проверка нужно ли р ерендерить компонент
 
-function Button (props) {                                                       Получение параметра label из DOM
-  return <button type="submit">{props.label}</button>;
-}
-ReactDOM.render(<Button label="Save" />, mountNode)
-
-
-
-class Button extends React.Component {                                           Получение параметра label из DOM
-  render() {
-    return <button>{this.props.label}</button>;
+___________________________________________________________________________
+test(name="a"){                                             //Дефолтное значени для метода
+    console.log({name}) ;
   }
+____________________________________________________________________________
+var lordify = (firstName:any) => '{firstname} of Canterbury'      //Пример стрелочной функции
+______________________________________________________________________________
+var sandwich = {                                            //деструктуризация
+ bread: "dutch crunch",
+ meat: "tuna",
+ cheese: "swiss",
+ toppings: ["lettuce", "tomato", "mustard"]
 }
-// Use it (same syntax)
-ReactDOM.render(<Button label="Save" />, mountNode);
-_______________________________________________________________________________________________________________________
+var {bread, meat} = sandwich
 
-
-function Button (props) {
-  return React.createElement(                                                    Flux
-    "button",
-    { type: "submit" },
-    props.label
-  );
-}
-ReactDOM.render(
-  React.createElement(Button, { label: "Save" }),
-  mountNode
-);
-_______________________________________________________________________________________________________________________
-
-class Button extends React.Component {                                            Вызов функции из класса
-  clickCounter = 0;
-  handleClick = () => {
-    console.log(`Clicked: ${++this.clickCounter}`);
-  };
-
-  render() {
-    return (
-      <button id={this.id} onClick={this.handleClick}>
-        {this.props.label}
-      </button>
-    );
-  }
-}
-// Use it
-ReactDOM.render(<Button label="Save" />, mountNode);
-_______________________________________________________________________________________________________________________
-
-class CounterButton extends React.Component {                                   работа со state
-  state = {                                                                     his.setState((prevState)  принимает пред значение state
-    clickCounter: 0                                                             clickCounter значение
-  };
-
-  handleClick = () => {
-    this.setState((prevState) => {
-     return { clickCounter: prevState.clickCounter + 1 };
-    });
-  };
-
-  render() {
-    return (
-      <div>
-        <button onClick={this.handleClick}>Click</button>
-        <p>Clicked: {this.state.clickCounter}</p>
-      </div>
-    );
-  }
-}
-ReactDOM.render(<CounterButton />, mountNode);
-
-
+var [firstResort] = ["Kirkwood", "Squaw", "Alpine"]         //для массива
+var [,,thirdResort] = ["Kirkwood", "Squaw", "Alpine"]
